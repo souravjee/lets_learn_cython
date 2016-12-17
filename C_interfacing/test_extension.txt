@@ -1,0 +1,45 @@
+
+>>> import use_struct
+>>> from use_struct import test1, test2, test3, \
+... view1_exposed_struct, view2_exposed_struct
+
+>>> dir(use_struct)
+['__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '__test__', '_dct', 'test1', 'test2', 'test3', 'view1_exposed_struct', 'view2_exposed_struct']
+
+>>> view2_exposed_struct(1)
+{'x': 55}
+>>> view2_exposed_struct(2)
+{'x': 155}
+
+>>> test1(1000, 2000)
+{'x': 1000}
+
+>>> test2(200, 210)
+before modification2 {'x': 1000} {'x': 155}
+after modification2 {'x': 200} {'x': 1000}
+{'x': 200}
+
+>>> view1_exposed_struct(1)
+{'x': 55}
+>>> view1_exposed_struct(2)
+{'x': 155}
+>>> view2_exposed_struct(1)
+{'x': 200}
+>>> view2_exposed_struct(2)
+{'x': 1000}
+
+>>> test3(300, 310)
+before modification3 {'x': 200} {'x': 0}
+after modification3 {'x': 300} {'x': 300}
+{'x': 300}
+
+Question: why the zero?
+
+>>> view1_exposed_struct(1)
+{'x': 55}
+>>> view1_exposed_struct(2)
+{'x': 155}
+>>> view2_exposed_struct(1)
+{'x': 300}
+>>> view2_exposed_struct(2)
+{'x': 1000}
