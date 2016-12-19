@@ -1,3 +1,7 @@
 build/
 *.so
 *.o
+use_struct.c
+
+# for Windows
+*.pyd
